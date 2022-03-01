@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function getTime() {
+            var time = document.getElementById("time");
+            var d = new Date();
+            time.innerHTML = d.toLocaleTimeString([], {timeStyle: 'short'});
+        }
+    </script>
+</head>
+<body onload="getTime()">
+
+    <div class="main">
+    <h2>Recommended activity:</h2>
+
+    <h1>Go to bed for the night.</h1>
+
+    <div class="postscript">
+        <p>It's <span id="time"></span>, why are you still awake?  I could cite studies about how people need sleep, but then you might click on them and not actually follow my recommendation.</p>
+        <p>If you have a terrible sleep schedule, no time like the present to try and fix it!  But if you have night shift for work or something, you can always try again for another recommendation.</p>
+    </div>
+    <a href="book.html"><button class="dontclickme-small"><span>Try Again</span></button></a>
+
+    </div>
+
+    <div class="footer">
+        <p>Copyright 2022 Allison J.B. Chaney.
+            <a href="http://buymeacoffee.com/ajbc">Buy my kids a book.</a>
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function ready(reclink) {
+            document.getElementById("rec").href=reclink;
+            var info = document.getElementById("info");
+            info.style.visibility='visible';
+            var tmp = document.getElementById("waiting");
+            tmp.remove();
+        }
+
+        function getLocation() {
+            var d = new Date();
+            var waketime = new Date(d.getFullYear(), d.getMonth(),
+                d.getDate(), 5, 0, 0);
+            var sleeptime = new Date(d.getFullYear(), d.getMonth(),
+                d.getDate(), 22, 00, 0);
+
+            if (waketime >= d || sleeptime <= d) {
+                return ready("sleep.html");
+            }
+
+            document.getElementById("rec").href=rec;
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                return ready("book.html");
+            }
+        }
+
+        function httpGetAsync(url, callback) {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function() {
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                    callback(xmlHttp.responseText);
+            }
+            xmlHttp.open("GET", url, true); // true for asynchronous
+            xmlHttp.send(null);
+        }
+
+        function locationKey(locdata) {
+            let data = JSON.parse(locdata);
+            var blurb = document.getElementById("blurb");
+            blurb.innerHTML = "You're in " + data.LocalizedName;
+            httpGetAsync("http://dataservice.accuweather.com/currentconditions/v1/" + data.Key + "?apikey=1OihluXTXylf7B6UAReZ9rZcfi70cEKL", goodWeather);
+        }
+
+        function goodWeather(weather) {
+            var data = JSON.parse(weather)[0];
+            var blurb = document.getElementById("blurb");
+            blurb.innerHTML = blurb.innerHTML +" and it's " +
+                data.WeatherText.toLowerCase() + " and " +
+                data.Temperature.Imperial.Value + "F/" +
+                data.Temperature.Metric.Value + "C.";
+
+            if (!data.HasPrecipitation &&
+                data.Temperature.Metric.Value >= 3 &&
+                data.Temperature.Metric.Value <= 28) {
+                return ready("outside.html");
+            } else {
+                return ready("book.html");
+            }
+        }
+
+        function showPosition(position) {
+            httpGetAsync("http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=1OihluXTXylf7B6UAReZ9rZcfi70cEKL&q=" + position.coords.latitude + "%2C" + position.coords.longitude, locationKey);
+        }
+    </script>
+</head>
+<body onload="getLocation()">
+
+    <div class="main">
+    <h1>Great!  Now let's gather your data...</h1>
+        <img id="waiting" width="100px" src="spin.gif" />
+    <div class="userinfo" id="info">
+        <p><span id="blurb"></span></p>
+
+        <h2>Are you ready for your recommenation?</h2>
+
+        <a id="rec" href="#"><button class="clickme"><span>Yes!</span></button></a>
+
+    </div>
+    </div>
+
+    <div class="footer">
+        <p>Copyright 2022 Allison J.B. Chaney.
+            <a href="http://buymeacoffee.com/ajbc">Buy my kids a book.</a>
+        </p>
+    </div>
+</body>
+</html>

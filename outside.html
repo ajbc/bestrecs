@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function getTime() {
+            var time = document.getElementById("time");
+            var d = new Date();
+            time.innerHTML = d.toLocaleTimeString([], {timeStyle: 'short'});
+        }
+    </script>
+</head>
+<body onload="getTime()">
+
+    <div class="main">
+    <h2>Recommended activity:</h2>
+
+    <h1>Go for a walk outside.</h1>
+
+    <div class="postscript">
+        <p>It's a beautiful day, why don't you go outside and enjoy it?  Give yourself some time to take in the world around you.  Walking is great exercise too.  If you aren't mobile enough to go for a walk, you can still find a place to sit and look for birds or people-watch.</p>
+        <p>If that doesn't work for you, you can always try again for another recommendation.</p>
+    </div>
+    <a href="book.html"><button class="dontclickme-small"><span>Try Again</span></button></a>
+
+    </div>
+
+    <div class="footer">
+        <p>Copyright 2022 Allison J.B. Chaney.
+            <a href="http://buymeacoffee.com/ajbc">Buy my kids a book.</a>
+        </p>
+    </div>
+</body>
+</html>
