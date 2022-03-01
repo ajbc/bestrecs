@@ -47,7 +47,7 @@
             let data = JSON.parse(locdata);
             var blurb = document.getElementById("blurb");
             blurb.innerHTML = "You're in " + data.LocalizedName;
-            httpGetAsync("http://dataservice.accuweather.com/currentconditions/v1/" + data.Key + "?apikey=1OihluXTXylf7B6UAReZ9rZcfi70cEKL", goodWeather);
+            httpGetAsync("https://dataservice.accuweather.com/currentconditions/v1/" + data.Key + "?apikey=1OihluXTXylf7B6UAReZ9rZcfi70cEKL", goodWeather);
         }
 
         function goodWeather(weather) {
