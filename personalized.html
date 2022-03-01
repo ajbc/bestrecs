@@ -68,7 +68,7 @@
         }
 
         function showPosition(position) {
-            httpGetAsync("http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=1OihluXTXylf7B6UAReZ9rZcfi70cEKL&q=" + position.coords.latitude + "%2C" + position.coords.longitude, locationKey);
+            httpGetAsync("https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=1OihluXTXylf7B6UAReZ9rZcfi70cEKL&q=" + position.coords.latitude + "%2C" + position.coords.longitude, locationKey);
         }
     </script>
 </head>
