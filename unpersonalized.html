@@ -5,8 +5,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script>
+        function gettime() {
+            var d = new Date();
+            var waketime = new Date(d.getFullYear(), d.getMonth(),
+                d.getDate(), 5, 0, 0);
+            var sleeptime = new Date(d.getFullYear(), d.getMonth(),
+                d.getDate(), 22, 00, 0);
+
+            if (waketime >= d || sleeptime <= d) {
+                document.getElementById("rec").href="sleep.html";
+            }
+        }
+
+    </script>
 </head>
-<body>
+<body onload="gettime()">
 
     <div class="main">
     <h1>Aw, man.  I was really looking forward to<br />
@@ -14,7 +28,7 @@
     <h2>But that's okay.  I'll give you a good recommendation anyway.<br />
         Are you ready?</h2>
 
-    <a href="book.html"><button class="clickme"><span>Yes!</span></button></a>
+    <a id="rec" href="book.html"><button class="clickme"><span>Yes!</span></button></a>
     <a href="explainer.html"><button class="dontclickme-small"><span>Wait, selling data?</span></button></a>
 
     </div>
