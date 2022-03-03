@@ -114,10 +114,10 @@ p.buffer {
     }
 
     h1 {
-        size: 90%;
+        font-size: 1.75em;
     }
 
     h2 {
-        size: 90%
+        font-size: 1.4em;
     }
 }
