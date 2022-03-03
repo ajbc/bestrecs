@@ -109,6 +109,7 @@ p.buffer {
     div.main {
         text-align: center;
         padding-top: 100px;
+        width: 90%;
         margin: auto;
     }
 
