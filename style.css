@@ -113,4 +113,11 @@ p.buffer {
         margin: auto;
     }
 
+    h1 {
+        size: 90%;
+    }
+
+    h2 {
+        size: 90%
+    }
 }
